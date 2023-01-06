@@ -1,0 +1,45 @@
+<div class="container-fluid">
+
+  <div class="custom-card">
+    <div class="alert alert-danger" *ngIf="error">
+      <p>{{ error }}</p>
+    </div>
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" >
+    <div class="form-group">
+      <input type="email"
+             placeholder="Enter email address"
+             class="form-control"
+             id="email"
+             ngModel
+             name="email"
+             required
+             email
+      /> 
+    </div>
+<br>
+    <div class="form-group">
+      <input type="password"
+             placeholder="Enter password"
+             class="form-control"
+             id="password"
+             ngModel
+             name="password"
+             required
+             minlength="6"
+      />
+    </div>
+<br>
+    <button class="loginBtn btn btn-block btn-primary" type="submit" [disabled]="!authForm.valid">{{isLoginMode ? 'Login' : 'Sign Up'}} </button>
+
+    <p class="horizontal-line-text">
+      <span class="Line_Span">or</span>
+    </p>
+
+    <button class="btn btn-block google-sign-in" (click)="onSwitchMode()" type="button">
+      <img   class="googleImg" [src]="'assets/images/google.svg'" alt="google"/>
+      <span class="googlespan" >Switch to {{isLoginMode ? 'Sign Up' : 'Login'}}</span>
+    </button>
+  </form>
+  </div>
+
+</div>

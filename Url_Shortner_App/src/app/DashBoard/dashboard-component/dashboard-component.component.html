@@ -1,0 +1,58 @@
+<div class="main">
+  
+
+<div class=" container-fluid">
+  <div class="container">
+    <div class="h1 text-1 ">More than just Shorter Link</div>
+    <br>
+    <div>Build your Brand recognition and get detailed insights on how your links are performing</div>
+<br>
+<br>
+    <div class="custom-card" style="position: relative;">
+     
+
+      <div class="alert alert-danger" *ngIf="error">
+        <p>{{ error }}</p>
+      </div>
+        <br>
+        <form (ngSubmit)="onSubmit(formShorter)" [formGroup]="formShorter">
+           <div class="row">
+            <label for="longLink">
+              <input
+              class="form-control "
+                type="longLink"
+                placeholder="your Url here..."
+                [ngClass]="{invalid: formShorter.invalid}"
+                name="longLink"
+                formControlName="longLink"
+              />
+              <button class="btn btn-outline-success rounded-pill" color="primary">Shorten</button>
+            </label>
+            <label>
+              <input  class="form-control "
+                placeholder="your new url will be here.."
+                type="text"
+                name="short-link"
+                formControlName="shortLink"
+                #inputTarget
+              />
+              <button 
+              class="btn btn-outline-success"
+                [disabled]="!formShorter.get('shortLink')?.value"
+                type="button"
+                ngxClipboard
+                color="accent"
+                
+               
+              >
+                Copy
+              </button>
+            </label>
+           </div>
+          </form>
+    </div>
+  </div>
+   
+  
+  </div>
+</div>
