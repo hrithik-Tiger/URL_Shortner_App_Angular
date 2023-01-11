@@ -13,7 +13,7 @@ const routes: Routes = [
     
   },{
 
- //Dashboard Component
+ //Dashboard Component wiht auth gaurd to protect from direct access
  path: 'dashboard',
  component:DashboardComponentComponent,
  canActivate: [AuthGuard],

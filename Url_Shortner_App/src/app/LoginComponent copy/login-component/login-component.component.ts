@@ -33,7 +33,7 @@ export class LoginComponentComponent  {
   }
 
 
-
+//using firebase login to login user 
   onSubmit(form: NgForm) {
     if (!form.valid) {
       return;
