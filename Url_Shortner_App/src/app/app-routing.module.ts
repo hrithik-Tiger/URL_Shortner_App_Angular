@@ -8,15 +8,15 @@ import { LoginComponentComponent } from './LoginComponent copy/login-component/l
 const routes: Routes = [
   {
   // Login component 
-     path: 'login',
-     component:LoginComponentComponent
-
+     path: '',
+     component:LoginComponentComponent,
+     canActivate: [AuthGuard],
   },{
 
  //Dashboard Component
  path: 'dashboard',
  component:DashboardComponentComponent,
- 
+ canActivate: [AuthGuard],
 
 
   }
