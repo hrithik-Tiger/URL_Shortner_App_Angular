@@ -21,6 +21,8 @@ export class DashboardComponentComponent implements OnInit {
   fetchedUrlList:string[]=[]
   isloading = false;
   formShorter!: FormGroup;
+
+  //Expression to check the validity of Url entered by user
   reg =
     "((http|https)://)(www.)?" +
     "[a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]" +
@@ -34,6 +36,8 @@ export class DashboardComponentComponent implements OnInit {
 
   ) {}
 
+
+  //Checking the Validity of Url entered
   ngOnInit(): void {
     this.formShorter = this.fb.group({
       longLink: ["", [Validators.required, Validators.pattern(this.reg)]],
@@ -41,6 +45,8 @@ export class DashboardComponentComponent implements OnInit {
     });
   }
 
+
+  //Async fn to make code run asyncronusly to pass values until its fetched from the source
   async onSubmit(form: FormGroup) 
   {
     
@@ -59,13 +65,7 @@ export class DashboardComponentComponent implements OnInit {
       this.error = "";
       
 
-      // console.log("F : ",this.fetchedUrl)
-      // this.fetchedUrlList.push(this.fetchedUrl)
-      // console.log("FL : ",this.fetchedUrlList)
-      // console.log("FP : ",this.fetchedUrlList[0])
-     
-    
-
+      
 
 
 
@@ -85,6 +85,8 @@ export class DashboardComponentComponent implements OnInit {
 
 
 
+//If the Url entered by user is Invalid 
+
 
     } else {
       const errorMessage =`Invalid URL!`;
@@ -96,13 +98,7 @@ export class DashboardComponentComponent implements OnInit {
   
 
 
-  async getValue(url:string){
-    const _fetchedUrl = await setTimeout(()=>{
-      const _fetchedUrl = this.apiService.getShortUrl(url)
-      console.log("fn",this.fetchedUrl)
-    }, 2000) 
-    return _fetchedUrl;
-  }
+
 
  
 }

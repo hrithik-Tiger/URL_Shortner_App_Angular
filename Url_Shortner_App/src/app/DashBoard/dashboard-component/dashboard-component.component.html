@@ -38,14 +38,14 @@
            
               <label *ngIf="!isloading">
                 
-              <label  *ngFor="let url of fetchedUrlList ;index as i" class="card-body">
+              <label  class="card-body">
                 <input  class="form-control "
              
                 type="text"
                 name="short-link"
                 formControlName="shortLink"
                 #inputTarget
-                value="{{url}}"
+                value="{{fetchedUrl}}"
                 
               />
              
