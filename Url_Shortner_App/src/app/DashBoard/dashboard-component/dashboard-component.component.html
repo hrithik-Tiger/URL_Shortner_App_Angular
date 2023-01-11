@@ -36,22 +36,22 @@
               <app-loadingspinner></app-loadingspinner>
             </a>
            
-              <label *ngIf="!isloading">
-                
-              <label  class="card-body">
+           
+            
+              <label *ngFor="let url of fetchedUrlList" class="card-body">
                 <input  class="form-control "
              
                 type="text"
                 name="short-link"
                 formControlName="shortLink"
                 #inputTarget
-                value="{{fetchedUrl}}"
+                value="{{url}}"
                 
               />
-             
-              <button  [ngxClipboard]="inputTarget" color="accent"     class="btn btn-outline-success" >Copy this</button>
+              <!-- [ngxClipboard]="inputTarget"  -->
+              <button  color="accent" (click)="copyClipboard(inputTarget)"   class="btn btn-outline-success" >Copy this</button>
               </label>
-              </label>
+            
 
           
             

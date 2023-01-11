@@ -97,7 +97,11 @@ export class DashboardComponentComponent implements OnInit {
   }
   
 
-
+copyClipboard(input:any){
+  input.select();
+  document.execCommand('copy');
+  input.setselectRange(0,0);
+}
 
 
  

@@ -8,7 +8,14 @@ import { AppComponent } from './app.component';
 import { LoginComponentComponent } from './LoginComponent copy/login-component/login-component.component';
 import { DashboardComponentComponent } from './DashBoard/dashboard-component/dashboard-component.component';
 import { ClipboardModule } from 'ngx-clipboard';
+
+
 import {LoadingspinnerComponent} from '../app/shared/loadingspinner/loadingspinner.component'
+
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +29,8 @@ import {LoadingspinnerComponent} from '../app/shared/loadingspinner/loadingspinn
     FormsModule ,
     ReactiveFormsModule,
     HttpClientModule ,
-    ClipboardModule
+    ClipboardModule,
+    
     //MatProgressBarModule    
   ],
   providers: [],
