@@ -15,8 +15,11 @@
         <p>{{ error }}</p>
       </div>
         <br>
-        <form (ngSubmit)="onSubmit(formShorter)" [formGroup]="formShorter">
-           <div class="row">
+        <div class="row">
+       
+       
+          <form (ngSubmit)="onSubmit(formShorter)" [formGroup]="formShorter">
+           
             <label for="longLink">
               <input
               class="form-control "
@@ -28,31 +31,28 @@
               />
               <button class="btn btn-outline-success rounded-pill" color="primary">Shorten</button>
             </label>
-            <label>
-              <input  class="form-control "
-                placeholder="your new url will be here.."
-                type="text"
-                name="short-link"
-                formControlName="shortLink"
-                #inputTarget
-              />
-              <button 
-              class="btn btn-outline-success"
-                [disabled]="!formShorter.get('shortLink')?.value"
-                type="button"
-                ngxClipboard
-                color="accent"
-                
+            </form>
+            <label *ngFor="let url of fetchedUrlList ;index as i" class="card-body">
+          
+                <input  class="form-control "
+             
+                  type="text"
+                  name="short-link"
+                  formControlName="shortLink"
+                  #inputTarget
+                  value="{{url}}"
+                  
+                />
                
-              >
-                Copy
-              </button>
-            </label>
+                <button  [ngxClipboard]="inputTarget" color="accent"     class="btn btn-outline-success" >Copy this</button>
+              </label>
+
+            
            </div>
-          </form>
-    </div>
+          
+    
   </div>
    
   
   </div>
-</div>
+</div></div>

@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponentComponent } from './LoginComponent copy/login-component/login-component.component';
 import { DashboardComponentComponent } from './DashBoard/dashboard-component/dashboard-component.component';
-
+import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
   declarations: [
@@ -21,6 +21,7 @@ import { DashboardComponentComponent } from './DashBoard/dashboard-component/das
     FormsModule ,
     ReactiveFormsModule,
     HttpClientModule ,
+    ClipboardModule
     //MatProgressBarModule    
   ],
   providers: [],

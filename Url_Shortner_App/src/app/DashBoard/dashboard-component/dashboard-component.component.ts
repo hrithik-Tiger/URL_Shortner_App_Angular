@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   NgForm,
@@ -7,7 +7,7 @@ import {
   Validators
 } from "@angular/forms";
 
-
+import { ClipboardService } from 'ngx-clipboard';
 import { ApiService } from 'src/app/Service/api.service';
 @Component({
   selector: 'app-dashboard-component',
@@ -15,6 +15,10 @@ import { ApiService } from 'src/app/Service/api.service';
   styleUrls: ['./dashboard-component.component.css']
 })
 export class DashboardComponentComponent implements OnInit {
+  longUrl:string="";
+  //url :string="";
+  fetchedUrl:string=""
+  fetchedUrlList:string[]=[]
   loading = false;
   formShorter!: FormGroup;
   reg =
@@ -26,9 +30,7 @@ export class DashboardComponentComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     private apiService : ApiService,
-    private cdr: ChangeDetectorRef,
-    
-    
+    private clipboardApi: ClipboardService
 
   ) {}
 
@@ -39,28 +41,45 @@ export class DashboardComponentComponent implements OnInit {
     });
   }
 
-  onSubmit(form: FormGroup) {
+  onSubmit(form: FormGroup) 
+  {
     
     if (form.valid) {
       this.loading = true;
-      const url = form.value.longLink;
-      console.log(url)
-      this.apiService.shortenUrl(url).subscribe(
-        ({ link }) => {
-          this.formShorter.patchValue({ shortLink: link });
-          this.loading = false;
-        },
-        (errorMessage) => {
-          this.error = errorMessage;
-          this.loading = false;
-        }
-      );
+      this.longUrl = form.value.longLink;
+      console.log("on submit : ",this.longUrl)
+      this.fetchedUrl =this.apiService.getShortUrl(form.value["longLink"])
+      console.log("F : ",this.fetchedUrl)
+      this.fetchedUrlList.push(this.fetchedUrl)
+      console.log("FL : ",this.fetchedUrlList)
+      console.log("FP : ",this.fetchedUrlList[0])
+      const errorMessage ="";
+      this.error = errorMessage;
+      // .subscribe(
+      //   ({ link }) => {
+      //     this.formShorter.patchValue({ shortLink: link });
+      //     this.loading = false;
+      //   },
+      //   (error) => {
+      //     console.log("error from on sub : ",error.error)
+      //         this.error = error;
+      //   }
+      // );
+
+
+
+
+
+
+
     } else {
       const errorMessage =`Invalid URL!`;
       this.error = errorMessage;
       this.loading = false;
     }
+
   }
+  
 
   
 }

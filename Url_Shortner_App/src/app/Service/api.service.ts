@@ -6,18 +6,42 @@ import { environment } from "../../enviroments/enviroment"
   providedIn: 'root'
 })
 export class ApiService {
+  
+ api:string="";
+  constructor(private http: HttpClient) {
+  const api= 'https://api.shrtco.de/v2/shorten';
+  
 
- 
-  constructor(private http: HttpClient) {}
-  shortenUrl(longUrl: string): Observable<{ link: string }> {
-    
-  const urlParams = new HttpParams().set('url',longUrl);
- 
-    console.log("Inside s : "+longUrl)
-    return this.http.post<{ link: string }>(
-      `${environment.api}` ,
-      {url:longUrl}
-     // {'params':urlParams}
-    );
   }
-}
+
+
+  getShortUrl(url:string){
+  //   let urlSearchParams = new URLSearchParams();
+  //   urlSearchParams.append("url", url);
+  // const headers= new HttpHeaders()
+  // .set('content-type', 'application/json')
+  // .set('Access-Control-Allow-Origin', '*')
+  // .set('status','201 Created')
+
+  // const _params = new HttpParams()
+  // .set("url", url)
+
+  // const httpOptions = {
+  //   headers: headers,
+  //   params: _params,
+  //   withCredentials: true
+  // };
+  
+  
+     this.api= "https://api.shrtco.de/v2/shorten/";
+    const urlParams = new HttpParams().set('url',url);
+    //return this.http.get<any>(`https://api.shrtco.de/v2/shorten?url=${url}`);
+
+    return url;
+  }
+
+  }
+
+
+
+

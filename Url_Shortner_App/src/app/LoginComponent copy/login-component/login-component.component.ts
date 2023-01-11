@@ -54,7 +54,7 @@ export class LoginComponentComponent  {
     authObs.subscribe(
       resData => {
         console.log(resData);
-        this.router.navigate(['/tasks']);
+        this.router.navigate(['/dashboard']);
       },
       errorMessage => {
        
