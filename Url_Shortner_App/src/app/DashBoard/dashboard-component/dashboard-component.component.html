@@ -32,21 +32,28 @@
               <button class="btn btn-outline-success rounded-pill" color="primary">Shorten</button>
             </label>
             </form>
-            <label *ngFor="let url of fetchedUrlList ;index as i" class="card-body">
-          
+            <a *ngIf="isloading">
+              <app-loadingspinner></app-loadingspinner>
+            </a>
+           
+              <label *ngIf="!isloading">
+                
+              <label  *ngFor="let url of fetchedUrlList ;index as i" class="card-body">
                 <input  class="form-control "
              
-                  type="text"
-                  name="short-link"
-                  formControlName="shortLink"
-                  #inputTarget
-                  value="{{url}}"
-                  
-                />
-               
-                <button  [ngxClipboard]="inputTarget" color="accent"     class="btn btn-outline-success" >Copy this</button>
+                type="text"
+                name="short-link"
+                formControlName="shortLink"
+                #inputTarget
+                value="{{url}}"
+                
+              />
+             
+              <button  [ngxClipboard]="inputTarget" color="accent"     class="btn btn-outline-success" >Copy this</button>
+              </label>
               </label>
 
+          
             
            </div>
           

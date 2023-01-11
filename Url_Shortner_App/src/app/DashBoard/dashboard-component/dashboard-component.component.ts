@@ -16,10 +16,10 @@ import { ApiService } from 'src/app/Service/api.service';
 })
 export class DashboardComponentComponent implements OnInit {
   longUrl:string="";
-  //url :string="";
+  
   fetchedUrl:string=""
   fetchedUrlList:string[]=[]
-  loading = false;
+  isloading = false;
   formShorter!: FormGroup;
   reg =
     "((http|https)://)(www.)?" +
@@ -41,20 +41,34 @@ export class DashboardComponentComponent implements OnInit {
     });
   }
 
-  onSubmit(form: FormGroup) 
+  async onSubmit(form: FormGroup) 
   {
     
     if (form.valid) {
-      this.loading = true;
+
+      this.isloading = true;
       this.longUrl = form.value.longLink;
       console.log("on submit : ",this.longUrl)
-      this.fetchedUrl =this.apiService.getShortUrl(form.value["longLink"])
-      console.log("F : ",this.fetchedUrl)
-      this.fetchedUrlList.push(this.fetchedUrl)
-      console.log("FL : ",this.fetchedUrlList)
-      console.log("FP : ",this.fetchedUrlList[0])
-      const errorMessage ="";
-      this.error = errorMessage;
+
+      const res:any = await setTimeout(()=>{
+       this.fetchedUrl = this.apiService.getShortUrl(this.longUrl)
+       this.fetchedUrlList.push(this.fetchedUrl)
+        console.log("fn",this.fetchedUrl)
+        this.isloading = false;
+      }, 2000) 
+      this.error = "";
+      
+
+      // console.log("F : ",this.fetchedUrl)
+      // this.fetchedUrlList.push(this.fetchedUrl)
+      // console.log("FL : ",this.fetchedUrlList)
+      // console.log("FP : ",this.fetchedUrlList[0])
+     
+    
+
+
+
+
       // .subscribe(
       //   ({ link }) => {
       //     this.formShorter.patchValue({ shortLink: link });
@@ -75,11 +89,20 @@ export class DashboardComponentComponent implements OnInit {
     } else {
       const errorMessage =`Invalid URL!`;
       this.error = errorMessage;
-      this.loading = false;
+      this.isloading = false;
     }
 
   }
   
 
-  
+
+  async getValue(url:string){
+    const _fetchedUrl = await setTimeout(()=>{
+      const _fetchedUrl = this.apiService.getShortUrl(url)
+      console.log("fn",this.fetchedUrl)
+    }, 2000) 
+    return _fetchedUrl;
+  }
+
+ 
 }

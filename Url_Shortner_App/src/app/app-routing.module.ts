@@ -8,9 +8,9 @@ import { LoginComponentComponent } from './LoginComponent copy/login-component/l
 const routes: Routes = [
   {
   // Login component 
-     path: '',
+     path: 'login',
      component:LoginComponentComponent,
-     canActivate: [AuthGuard],
+    
   },{
 
  //Dashboard Component
