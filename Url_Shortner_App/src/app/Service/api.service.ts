@@ -7,7 +7,7 @@ import { environment } from "../../enviroments/enviroment"
 })
 export class ApiService {
   
-  
+
  api:string="";
   constructor(private http: HttpClient) {
   const api= 'https://api.shrtco.de/v2/shorten';
@@ -40,7 +40,7 @@ export class ApiService {
       return res ;
     }))
 
-    //return url;
+   
   }
 
   }

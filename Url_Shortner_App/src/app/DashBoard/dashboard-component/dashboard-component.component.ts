@@ -79,7 +79,7 @@ export class DashboardComponentComponent implements OnInit {
 
   }
   
-
+//To copy Items present in Input Box
 copyClipboard(input:any){
   input.select();
   document.execCommand('copy');
