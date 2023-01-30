@@ -17,8 +17,8 @@ import { ApiService } from 'src/app/Service/api.service';
 export class DashboardComponentComponent implements OnInit {
   longUrl:string="";
   
-  fetchedUrl:string=""
-  fetchedUrlList:string[]=[]
+  fetchedUrl =""
+  fetchedUrlList:any=[];
   isloading = false;
   formShorter!: FormGroup;
 
@@ -55,35 +55,18 @@ export class DashboardComponentComponent implements OnInit {
       this.isloading = true;
       this.longUrl = form.value.longLink;
       console.log("on submit : ",this.longUrl)
-
-      const res:any = await setTimeout(()=>{
-       this.fetchedUrl = this.apiService.getShortUrl(this.longUrl)
-       this.fetchedUrlList.push(this.fetchedUrl)
-        console.log("fn",this.fetchedUrl)
-        this.isloading = false;
-      }, 2000) 
       this.error = "";
+      this.apiService.getShortUrl(this.longUrl)
+      .subscribe((res:any)=>{
+     
+        this.isloading = false;
+        this.fetchedUrl = res.result.short_link;
+        this.fetchedUrlList.push(this.fetchedUrl)
+        console.log("value :" ,res.result.short_link)
+      });
+   
       
-
-      
-
-
-
-      // .subscribe(
-      //   ({ link }) => {
-      //     this.formShorter.patchValue({ shortLink: link });
-      //     this.loading = false;
-      //   },
-      //   (error) => {
-      //     console.log("error from on sub : ",error.error)
-      //         this.error = error;
-      //   }
-      // );
-
-
-
-
-
+ 
 
 //If the Url entered by user is Invalid 
 
