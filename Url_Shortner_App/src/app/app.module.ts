@@ -9,7 +9,8 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { AppComponent } from './app.component';
 import { LoginComponentComponent } from './LoginComponent copy/login-component/login-component.component';
 import { DashboardComponentComponent } from './DashBoard/dashboard-component/dashboard-component.component';
-import {LoadingspinnerComponent} from '../app/shared/loadingspinner/loadingspinner.component'
+import {LoadingspinnerComponent} from '../app/shared/loadingspinner/loadingspinner.component';
+import { ContactComponent } from './Conatct/contact/contact.component'
 
 
 
@@ -20,7 +21,8 @@ import {LoadingspinnerComponent} from '../app/shared/loadingspinner/loadingspinn
     AppComponent,
     LoginComponentComponent,
     DashboardComponentComponent,
-    LoadingspinnerComponent
+    LoadingspinnerComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,7 @@ import {LoadingspinnerComponent} from '../app/shared/loadingspinner/loadingspinn
     HttpClientModule ,
     ClipboardModule,
     
-    //MatProgressBarModule    
+       
   ],
   providers: [],
   bootstrap: [AppComponent]
