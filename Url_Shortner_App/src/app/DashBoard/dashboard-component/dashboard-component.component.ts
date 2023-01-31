@@ -54,15 +54,15 @@ export class DashboardComponentComponent implements OnInit {
 
       this.isloading = true;
       this.longUrl = form.value.longLink;
-      console.log("on submit : ",this.longUrl)
+ 
       this.error = "";
       this.apiService.getShortUrl(this.longUrl)
       .subscribe((res:any)=>{
-     
+
         this.isloading = false;
         this.fetchedUrl = res.result.short_link;
         this.fetchedUrlList.push(this.fetchedUrl)
-        console.log("value :" ,res.result.short_link)
+        
       });
    
       
@@ -81,9 +81,19 @@ export class DashboardComponentComponent implements OnInit {
   
 //To copy Items present in Input Box
 copyClipboard(input:any){
-  input.select();
-  document.execCommand('copy');
-  input.setselectRange(0,0);
+
+   
+    // Select the text field
+    input.select();
+    input.setSelectionRange(0, 99999); //Select range of input field
+  
+     // Copy the text inside the input field
+    navigator.clipboard.writeText(input.value);
+  
+    // Alert the copied text
+    alert("Text Copied " + input.value);
+
+
 }
 
 
